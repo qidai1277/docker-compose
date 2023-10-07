@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  rocketmq-dashboard:
+    image: apacherocketmq/rocketmq-dashboard:1.0.0
+    restart: always
+    environment:
+      # 指定 application.properties 配置文件位置, 正常情况下可以将配置文件放在 jar 包同级目录, 启动时会自动识别, 此处手动指定
+      JAVA_OPTS: >-
+        -Dspring.config.location=/tmp/rocketmq-dashboard/data/application.properties
+        -Drocketmq.namesrv.addr=10.11.12.57:9876;10.11.12.58:9876;10.11.12.59:9876
+        -Dcom.rocketmq.sendMessageWithVIPChannel=false
+        -Xms100m -Xmx256m
+    ports:
+    - 8080:8080
+    volumes:
+    - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+    - ./tmp:/tmp

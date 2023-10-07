@@ -1,0 +1,21 @@
+# 该文件支持热修改，即添加和修改用户时，不需要重新启动 console
+# 格式，如果增加和删除接口权限，直接在列表中增加和删除接口地址即可。
+# 接口路径配置支持通配符
+# * 表示匹配 0 或多个不是/的字符
+# ** 表示匹配 0 或多个任意字符
+# ? 表示匹配 1 个任意字符
+
+rolePerms:
+  # 普通用户权限
+  ordinary:
+  # /** 代表所有权限，也就是拥有管理员权限
+  - /**
+  # - /rocketmq/nsaddr
+  # - /ops/*
+  # - /dashboard/**
+  # - /topic/*.query
+  # - /topic/sendTopicMessage.do
+  # - /producer/*.query
+  # - /message/*
+  # - /messageTrace/*
+  # - /monitor/*
